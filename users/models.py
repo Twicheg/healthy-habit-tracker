@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractUser
 
 
 class User(AbstractUser):
+    username = None
     email = models.EmailField(unique=True, verbose_name='email')
     habits = models.ManyToManyField('habit.Habit', verbose_name='привычки', related_name='users')
 
