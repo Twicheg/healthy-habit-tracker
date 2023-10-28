@@ -1,4 +1,5 @@
 from rest_framework import generics
+from rest_framework.response import Response
 
 from users.models import User
 from users.serializers import UserSerializer
@@ -11,6 +12,11 @@ class UserListApiView(generics.ListAPIView):
 
 class UserCreateApiView(generics.CreateAPIView):
     serializer_class = UserSerializer
+
+    def perform_create(self, serializer):
+        new = serializer.save()
+        new.set_password(new.password)
+        new.save()
 
 
 class UserDestroyApiView(generics.DestroyAPIView):
