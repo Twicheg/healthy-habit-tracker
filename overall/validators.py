@@ -11,8 +11,8 @@ class HabitValidation:
             raise serializers.ValidationError('Время на выполнение не должно превышать 120 секунд')
 
 
-class HabitTimeValidation:
+class HabitPeriodicityValidation:
     def __call__(self, value):
-        if (value.replace(tzinfo=None)-datetime.datetime.now().replace(microsecond=False)).days > 7:
+        if value < 1:
             raise serializers.ValidationError('Нельзя выполнять привычку реже, чем 1 раз в 7 дней.')
 
