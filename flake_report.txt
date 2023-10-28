@@ -1,0 +1,10 @@
+./habit/tests.py:1:1: F401 'django.test.TestCase' imported but unused
+./habit/tests.py:4:1: E265 block comment should start with '# '
+./habit/views.py:1:1: F401 'django.shortcuts.render' imported but unused
+./habit/views.py:4:1: F401 'rest_framework.status' imported but unused
+./habit/views.py:5:1: F401 'rest_framework.response.Response' imported but unused
+./overall/validators.py:5:1: F401 'habit.models.Habit' imported but unused
+./overall/validators.py:16:39: E226 missing whitespace around arithmetic operator
+./users/tests.py:1:1: F401 'django.test.TestCase' imported but unused
+./users/urls.py:12:15: E126 continuation line over-indented for hanging indent
+./users/views.py:1:1: F401 'django.shortcuts.render' imported but unused
