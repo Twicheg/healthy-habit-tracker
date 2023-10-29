@@ -1,5 +1,4 @@
-from rest_framework import generics
-from rest_framework.response import Response
+from rest_framework import generics, permissions
 
 from users.models import User
 from users.serializers import UserSerializer
@@ -21,3 +20,4 @@ class UserCreateApiView(generics.CreateAPIView):
 
 class UserDestroyApiView(generics.DestroyAPIView):
     queryset = User.objects.all()
+    permission_classes = [permissions.IsAdminUser]

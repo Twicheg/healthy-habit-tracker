@@ -1,5 +1,3 @@
-import datetime
-
 from rest_framework import serializers
 
 from habit.models import Habit
@@ -17,7 +15,7 @@ class HabitPeriodicityValidation:
             raise serializers.ValidationError('Нельзя выполнять привычку реже, чем 1 раз в 7 дней.')
 
 
-class Validation:
+class HabitCreateValidation:
     def __call__(self, value):
         if not value.get('related_habit') and not value.get('sign_of_a_pleasant_habit'):
             raise serializers.ValidationError('привычка должна быть приятной или ссылаться на приятную')

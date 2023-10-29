@@ -157,7 +157,7 @@ CELERY_BEAT_SCHEDULE = {
 
     'activity':
         {
-            'task': 'config.tasks.user_activity',
+            'task': 'config.tasks.check_time_to_send',
             'schedule': timedelta(minutes=1)
         },
 
