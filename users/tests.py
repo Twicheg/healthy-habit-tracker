@@ -24,3 +24,41 @@ class LessonTestCase(APITestCase):
             response.status_code,
             status.HTTP_200_OK
         )
+
+    def test_create_user(self):
+        url = reverse('users:user_create')
+        data = {
+            "email": "test10@test.com",
+            "password": "12345",
+            "tg_username": "test"
+        }
+        response = self.client.post(
+            url,
+            data
+        )
+        self.assertEquals(
+            response.status_code,
+            status.HTTP_201_CREATED
+        )
+
+    def test_destroy_user(self):
+        url = reverse('users:user_destroy', args=[self.user.pk])
+        response = self.client.delete(
+            url
+        )
+
+        self.assertEquals(
+            response.status_code,
+            status.HTTP_204_NO_CONTENT
+        )
+
+        self.user.is_staff = False
+        self.user.is_superuser = False
+
+        response = self.client.delete(
+            url
+        )
+        self.assertEquals(
+            response.json(),
+            {'detail': 'You do not have permission to perform this action.'}
+        )
