@@ -146,7 +146,7 @@ SIMPLE_JWT = {
 CORS_ALLOWED_ORIGINS = ["http://127.0.0.1",]
 
 CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1",]
-#
+
 CELERY_BROKER_URL = 'redis://localhost:6379/'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379/'
 CELERY_TIMEZONE = "UTC"
@@ -154,11 +154,9 @@ CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
 
 CELERY_BEAT_SCHEDULE = {
-
-    'activity':
+    'message_tg':
         {
             'task': 'config.tasks.check_time_to_send',
             'schedule': timedelta(minutes=1)
         },
-
 }
