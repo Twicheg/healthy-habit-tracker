@@ -6,8 +6,6 @@ from habit.models import Habit
 from users.models import User
 
 
-# coverage run --source='.' --omit='*/migrations/*','*/management/*','*/__init__.py' manage.py test && coverage report
-
 class HabitTestCase(APITestCase):
     def setUp(self):
         data = {
@@ -88,9 +86,7 @@ class HabitTestCase(APITestCase):
         response = self.client.get(
             url
         )
-        self.assertEquals(
-            response.status_code,
-            status.HTTP_200_OK)
+        self.assertEquals(response.status_code, status.HTTP_200_OK)
 
     def test_getting_habit_retrieve(self):
         url = reverse('habit:habit_retrieve', args=[self.habit.id])
@@ -108,7 +104,7 @@ class HabitTestCase(APITestCase):
             url,
             data
         )
-        self.assertEquals(response.json()['action'],"newaction")
+        self.assertEquals(response.json()['action'], "newaction")
 
     def test_public_list(self):
         url = reverse('habit:habit_public_list')
@@ -116,7 +112,7 @@ class HabitTestCase(APITestCase):
             url
         )
 
-        self.assertEquals(None not in [i["is_public"] for i in response.json()],True)
+        self.assertEquals(None not in [i["is_public"] for i in response.json()], True)
 
     def test_getting_habit_delete(self):
         url = reverse('habit:habit_destroy', args=[self.habit.id])
@@ -127,4 +123,4 @@ class HabitTestCase(APITestCase):
             url,
             data
         )
-        self.assertEquals(response.status_code,status.HTTP_204_NO_CONTENT)
+        self.assertEquals(response.status_code, status.HTTP_204_NO_CONTENT)
