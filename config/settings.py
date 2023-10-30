@@ -156,7 +156,9 @@ CELERY_TASK_TIME_LIMIT = 30 * 60
 CELERY_BEAT_SCHEDULE = {
     'message_tg':
         {
-            'task': 'config.tasks.check_time_to_send',
-            'schedule': timedelta(minutes=1)
+            'task': 'config.celery.message', #'task': 'config.tasks.check_time_to_send' выкидывает ошибку
+            "args": [],
+            "kwargs": {},
+            'schedule': timedelta(seconds=1)
         },
 }

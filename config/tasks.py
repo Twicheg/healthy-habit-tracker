@@ -1,6 +1,6 @@
 import os
 
-from celery import shared_task
+from celery import shared_task, Celery
 from datetime import datetime
 import requests
 from habit.models import Habit
@@ -19,7 +19,6 @@ def message_send(owner, place, action, time, chat_id):
     requests.get(f'{URL}/sendMessage', params=param)
 
 
-@shared_task(name="check_time_to_send")
 def check_time_to_send():
     time_now = datetime.now().replace(microsecond=False)
     for obj in Habit.objects.all():
