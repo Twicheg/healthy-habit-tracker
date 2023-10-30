@@ -13,8 +13,7 @@ def message_send(owner, place, action, time, chat_id):
         "chat_id": chat_id,
         "text": f'{owner}, you must do {action} in {place} at {time}'
     }
-    response = requests.get(f'{URL}/sendMessage', params=param)
-
+    requests.get(f'{URL}/sendMessage', params=param)
 
 
 def get_chat_id(username, user_id):
