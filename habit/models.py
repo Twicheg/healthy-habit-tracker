@@ -14,7 +14,7 @@ class Habit(models.Model):
     time_to_complete = models.IntegerField(default=0, verbose_name="время на выполнение",
                                            null=True, blank=True)
     is_public = models.BooleanField(default=0, verbose_name='признак публичности')
-    last_send = models.DateTimeField(default=0, null=True, blank=True,
+    last_send = models.DateTimeField(default=None, null=True, blank=True,
                                      verbose_name="время последней отправки напоминания")
 
     def __str__(self):
